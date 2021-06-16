@@ -1,8 +1,8 @@
 import sys
-from typing import Iterable, Iterator, Optional, TextIO
+from typing import List, Iterator, Optional, TextIO
 
 
-def cat(file_paths: Optional[Iterable[str]] = ['-'],
+def cat(file_paths: Optional[List[str]] = [],
         has_number: Optional[bool] = None):
 
     def file_lines(file: TextIO) -> Iterator[str]:
@@ -37,6 +37,8 @@ def cat(file_paths: Optional[Iterable[str]] = ['-'],
 
     if not file_paths:
         file_paths = []
+    if len(file_paths) == 0:
+        file_paths = ['-']
 
     line_number: int = 0
     for file_path in file_paths:
