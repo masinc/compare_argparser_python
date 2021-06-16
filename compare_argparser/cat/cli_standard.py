@@ -14,7 +14,7 @@ def create_parser() -> argparse.ArgumentParser:
 def main():
     parser = create_parser()
     args = parser.parse_args()
-    cat(file_paths=args.FILE, has_show_number=args.number)
+    cat(file_paths=args.FILE, has_number=args.number)
 
 
 if __name__ == '__main__':

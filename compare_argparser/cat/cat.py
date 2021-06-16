@@ -3,7 +3,7 @@ from typing import Iterable, Iterator, Optional, TextIO
 
 
 def cat(file_paths: Optional[Iterable[str]] = ['-'],
-        has_show_number: Optional[bool] = None):
+        has_number: Optional[bool] = None):
 
     def file_lines(file: TextIO) -> Iterator[str]:
         for line in file:
@@ -14,7 +14,7 @@ def cat(file_paths: Optional[Iterable[str]] = ['-'],
         for (index, line) in enumerate(file_lines(file)):
             out: str
 
-            if has_show_number:
+            if has_number:
                 line_number = initial_line_number + index
                 out = f'{line_number}\t{line}'
             else:
@@ -40,7 +40,7 @@ def cat(file_paths: Optional[Iterable[str]] = ['-'],
 
     line_number: int = 0
     for file_path in file_paths:
-        if has_show_number:
+        if has_number:
             line_number += 1
 
         line_number = cat_core(file_path, initial_line_number=line_number) or 1
